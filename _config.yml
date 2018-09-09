@@ -1,17 +1,17 @@
 # SITE CONFIGURATION
-baseurl: "/Type-on-Strap"
-url: "https://sylhare.github.io"
-title: Type on Strap # site's title
+baseurl: "/type"
+url: "https://c1arissa.github.io"
+title: Clarissa Podell # site's title
 description: "A website with blog posts and pages" # used by search engines
 
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
   # Meta
-  title: Type on Strap # blog's title
-  avatar: assets/img/triangle.svg
-  favicon: assets/favicon.ico
-  gravatar: # Email MD5 hash
+  title: Clarissa Podell # blog's title
+  avatar:  # assets/img/triangle.svg
+  favicon: # assets/favicon.ico
+  gravatar:  # Email MD5 hash
 
   # Header and footer text
   header_text: > #two or three lines to describe your site
@@ -22,14 +22,14 @@ theme_settings:
 
   # Icons
   rss: true  # Make sure you created a feed.xml with feed.xml layout
-  email_address: # Full email address, e.g. "sam@example.com"
+  email_address: clarissapodell@gmail.com # Full email address, e.g. "sam@example.com"
   behance:
   bitbucket:
   dribbble:
   facebook:
   flickr:
   gitlab:
-  github: "sylhare"
+  github: "c1arissa"
   google_plus:
   instagram:
   keybase:
@@ -47,16 +47,16 @@ theme_settings:
   
   # Sharing options
   share_buttons:
-    facebook: true
-    twitter: true
-    google_plus: true
+    facebook: # true
+    twitter:
+    google_plus:
     tumblr:
     pinterest:
     pocket:
-    reddit: true
+    reddit: 
     linkedin:
     wordpress:
-    email: true
+    email:
 
   # Scripts / Features 
   google_analytics: # Tracking ID, e.g. "UA-000000-01"
