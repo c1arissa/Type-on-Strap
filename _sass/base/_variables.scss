@@ -11,7 +11,7 @@ $padding-small: 4%;
 $padding-x-small: 3%;
 
 // Brand colours
-$theme-color: #337ab7;
+$theme-color: #9b4dca;
 $brand-color: #fff;
 $background-color: #fff;
 $border-color: rgba(0, 0, 0, 0.1); // rgba recommended if using feature images
@@ -19,7 +19,7 @@ $border-color: rgba(0, 0, 0, 0.1); // rgba recommended if using feature images
 // Typography colours
 $text-color: #383838;
 $link-color: $theme-color; // #1ABC9C;
-$selection-color: #D4D4D4; // visible when highlighting text
+$selection-color: #C188E0; // #D4D4D4; visible when highlighting text
 $blockquote-color: #EEF7FA; // $background-color;
 
 //Search color
@@ -29,7 +29,7 @@ $search-color: #999;
 
 // Header colours
 $header-link-color: #383838;
-$navbar-separator-opacity: 0;
+$navbar-separator-opacity: 0.8;
 
 // Feature image for articles
 $feature-image-text-color: #fff;
@@ -51,7 +51,7 @@ $border-radius: 4px !default;
 
 
 
-// base16 Material Theme
+/* base16 Material Theme
 $base00: #263238 !default;  // Default Background
 $base01: #2E3C43 !default;  // Lighter Background (Used for status bars)
 $base02: #314549 !default;  // Selection Background
@@ -63,13 +63,28 @@ $base07: #FFFFFF !default;  // Light Background (Not often used)
 $base08: #F07178 !default;  // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
 $base09: #F78C6C !default;  // Integers, Boolean, Constants, XML Attributes, Markup Link Url
 $base0a: #FFCB6B !default;  // Classes, Markup Bold, Search Text Background
-$base0b: #98C379 !default;  // Strings, Inherited Class, Markup Code, Diff Inserted
+$base0b: #C3E88D !default;  // Strings, Inherited Class, Markup Code, Diff Inserted
 $base0c: #89DDFF !default;  // Support, Regular Expressions, Escape Characters, Markup Quotes
 $base0d: #82AAFF !default;  // Functions, Methods, Attribute IDs, Headings
 $base0e: #C792EA !default;  // Keywords, Storage, Selector, Markup Italic, Diff Changed
 $base0f: #FF5370 !default;  // Deprecated, Opening/Closing Embedded Language Tags e.g.
 
 
+/* base16 Unikitty Dark by Josh W Lewis (@joshwlewis) */
 
-
-
+$base00: #2e2a31 !default;
+$base01: #4a464d !default;
+$base02: #666369 !default;
+$base03: #838085 !default;
+$base04: #9f9da2 !default;
+$base05: #bcbabe !default;
+$base06: #d8d7da !default;
+$base07: #f5f4f7 !default;
+$base08: #d8137f !default;
+$base09: #E66B2B !default;
+$base0a: #dc8a0e !default;
+$base0b: #17ad98 !default;
+$base0c: #149bda !default;
+$base0d: #796af5 !default;
+$base0e: #bb60ea !default;
+$base0f: #c720ca !default;

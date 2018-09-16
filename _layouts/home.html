@@ -3,9 +3,20 @@ layout: default
 ---
 
 <div class="home">
+<!--
+<div class="hero-image">
+    <div class="hero-text">
+        <h1>I am John Doe</h1>
+        <p>And I'm a Photographer</p>
+  </div>
+</div>
+
+style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/type/assets/img/purple-clouds.jpg')">
+-->
+
   {% if site.theme_settings.header_text %}
   <div id="main" class="call-out"
-  style="background-image: url('{{ site.baseurl }}/{{ site.theme_settings.header_text_feature_image }}')">
+    style="background-image: url('{{ site.baseurl }}/assets/img/space-crop.jpg')">
     {{ site.theme_settings.header_text }}
   </div>
   {% endif %}
@@ -13,7 +24,7 @@ layout: default
   <div class="posts">
     {% for post in paginator.posts %}
     <div class="post-teaser">
-      {% if post.thumbnail %} 
+      {% if post.thumbnail %}
       <div class="post-img">
          <img src="{{ site.baseurl }}/{{ post.thumbnail }}">
       </div>
@@ -30,11 +41,10 @@ layout: default
             </p>
           </header>
           <div class="excerpt">
-              {{ post.excerpt | strip_html | escape }}
-            <!--{{ post.content | strip_html | truncate: "250" }}-->
-            <!--<a class="button" href="{{ post.url | prepend: site.baseurl }}">
-              {{ site.theme_settings.str_continue_reading }}
-            </a>-->
+            {{ post.content | strip_html | truncate: "250" }}
+            <div style="margin-top: 0.5em"><a class="button" href="{{ post.url | prepend: site.baseurl }}">
+              {{ site.theme_settings.str_continue_reading }} <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+          </a></div>
           </div>
       </span>
     </div>

@@ -55,7 +55,7 @@ a.button {
 .body-link {
     &:hover {
         text-decoration: underline;
-        color: darken($link-color, 15%);
+        color: darken($link-color, 35%);
     }
 }
 
@@ -78,4 +78,13 @@ a.button {
 
 .right {
     float: right;
+}
+
+.img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+    width: 50%;
 }

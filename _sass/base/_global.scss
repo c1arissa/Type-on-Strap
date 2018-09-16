@@ -20,10 +20,12 @@ html {
 // Typography
 ::selection {
     background: $selection-color;
+    color: $theme-color;
 }
 
 ::-moz-selection {
     background: $selection-color;
+    color: $theme-color;
 }
 
 body {
@@ -48,11 +50,11 @@ h6 {
 }
 
 h1 {
-    font-size: 2.3em;
+    font-size: 2.5em;
 }
 
 h2 {
-    font-size: 1.75em;
+    font-size: 2em;
 }
 
 h3 {
@@ -80,7 +82,8 @@ table {
     table-layout: fixed;
     width: 100%;
     word-wrap: break-word;
-    overflow-x: scroll;
+    //overflow-x: scroll;
+    overflow-x: auto;
     display: inline-block;
 }
 

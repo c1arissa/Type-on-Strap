@@ -1,15 +1,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.theme_settings.description }}{% endif %}">
+
+    <title>{% if page.title %}{{ page.title }} | {{ site.theme_settings.title }}{% else %}{{ site.theme_settings.title }}{% endif %}</title>
+    <!-- <link rel="shortcut icon" href="/testgitpages/images/favicon.ico">
+    <link href="/testgitpages/images/fav.ico" rel="icon" type="image/x-icon"/> -->
+    {% include favicon.html %}
+
     <!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
     <script defer=true src="{{ site.baseurl }}/assets/js/main.min.js"></script>
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 
-    <!--Favicon-->
-    <link rel="shortcut icon" href="{{ site.baseurl }}/{{ site.theme_settings.favicon }}" type="image/x-icon">
+    <!--Favicon
+    <link rel="shortcut icon" href="{{ site.baseurl }}/{{ site.theme_settings.favicon }}" type="image/x-icon"> -->
 
     <!-- Canonical -->
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
@@ -20,7 +26,7 @@
     <!-- Font Awesome -->
     <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/vendor/font-awesome.min.css">
-    
+
     {% if page.bootstrap %}
     <!-- Bootstrap-3.3.7 isolation CSS -->
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/vendor/bootstrap-iso.min.css">
@@ -34,7 +40,7 @@
 
     <!-- Google Fonts -->
     {% if site.theme_settings.google_fonts %}
-    <link href="//fonts.googleapis.com/css?family={{ site.theme_settings.google_fonts }}" rel="stylesheet" type="text/css"> 
+    <link href="//fonts.googleapis.com/css?family={{ site.theme_settings.google_fonts }}" rel="stylesheet" type="text/css">
     {% endif %}
 
     <!-- KaTeX 0.8.3 -->
@@ -64,7 +70,7 @@
 
     </script>
     {% endif %}
-    
+
     <!-- seo tags -->
     {% seo %}
     <!-- Manual seo tags -->
