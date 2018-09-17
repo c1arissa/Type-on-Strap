@@ -49,7 +49,7 @@ $ ssh leviathanX@leviathan.labs.overthewire.org -p 2223
 
 To login to the first level, use the given credentials: leviathan0 (username) / leviathan0 (password).
 
-In this level, `.backup` is a hidden directory.  The `-a` switch with `ls` displays the hidden directories.
+Leviathan0's home directory contains a hidden directory named `.backup`.  Use the `-a` switch with `ls` to display the hidden directories.
 
 {% highlight bash %}
 leviathan0@leviathan:~$ ls -la
@@ -82,13 +82,13 @@ leviathan0@leviathan:~/.backup$ cat bookmarks.html | grep "password"
 
 ## Level 1
 
-Login to the next level using the password found in Level 0.
+Login to the next level with the password found in Level 0.
 
 ```bash
 clarissa@ubuntu:~$ ssh leviathan1@leviathan.labs.overthewire.org -p 2223
 ```
 
-The general steps I take for each level is the same: view the contents of the home directory with `ls`, then run `file` on the given executable to get additional information.  Based on the output, we have a setuid ELF 32-bit executable.
+The general steps I take for each level is the same.  First, view the contents of the home directory with `ls`, then run `file` on the given executable to get additional information.  Based on the output, we have a setuid ELF 32-bit executable named `check`.
 
 ```bash
 leviathan1@leviathan:~$ ls
@@ -115,15 +115,12 @@ Reading symbols from ./check...(no debugging symbols found)...done.
 (gdb) set disassembly-flavor intel
 ```
 
-About halfway through the disassembly output of main is a call to `strcmp@plt` (at line +129).  
+About halfway through the disassembly output of main is a call to `strcmp@plt` (at address 0x56555741).  
 
 ```nasm
 (gdb) disass main
 Dump of assembler code for function main:
 ...
-0x56555712 <+82>:	call   0x565554d0 <printf@plt>
----Type <return> to continue, or q <return> to quit---
-0x56555717 <+87>:	add    esp,0x10
 0x5655571a <+90>:	call   0x565554e0 <getchar@plt>
 0x5655571f <+95>:	mov    BYTE PTR [ebp-0x1c],al
 0x56555722 <+98>:	call   0x565554e0 <getchar@plt>
