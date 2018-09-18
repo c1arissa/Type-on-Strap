@@ -6,16 +6,16 @@ tags: [Linux, Exploit, CTF, Wargame]
 
 # Introduction to Narnia
 
-[Narnia]() is one of OverTheWire's intermediate levels.  There are a total of 10 levels and runs on Linux/x86.  What follows below is the original description of narnia, copied from intruded.net:
+[Narnia]() is one of OverTheWire's intermediate wargames.  There are a total of 10 levels which run on Linux/x86.  What follows below is the original description of Narnia (from intruded.net):
 
 Description:
 
 > This wargame is for the ones that want to learn basic exploitation. You can see the most common bugs in this game and we've tried to make them easy to exploit. You'll get the source code of each level to make it easier for you to spot the vuln and abuse it. The difficulty of the game is somewhere between Leviathan and Behemoth, but some of the levels could be quite tricky.
 
-Here's some additional information pertaining to each game:
+Here's some additional information that is given pertaining to each game:
 
-* Narnia's levels are called narnia0, narnia1, ... etc.
-* Passwords (flags) for each level are in `/etc/narnia_pass/narniaX`.
+* Narnia's levels are called narnia0, narnia1, ..., etc.
+* Passwords (flags) are in `/etc/narnia_pass/narniaX`.
 * Levels are stored in /narnia/.  Each level contains a source code file and a corresponding executable.
 * OTW provides the following SSH Information:
 
@@ -80,13 +80,15 @@ After the two local variables are pushed onto `main`'s stack frame, the stack me
 ![narnia0]({{ site.baseurl }}/assets/img/narnia.png)
 
 
-The arrow in the above diagram indicates the direction of the stack overwrite.  Because `buf` is placed higher up on the stack, we can write past `buf` and change the contents of `val`.  So, 20 characters to fill `buf` plus another 4 for `0xdeadbeef` (in reversed order because of little-endian notation) will overwrite `val` with the correct value.
+The arrow in the above diagram indicates the direction of the stack overwrite.  Because `buf` is placed higher up on the stack, we can write past `buf` and change the contents of `val`'s memory.  Twenty characters to fill `buf` plus another 4 for `0xdeadbeef` (in reversed order because of little-endian notation) will overwrite `val` with the correct value.
+
+Due to the little-endian architecture, we must write those bytes into memory in reverse order.
 
 The first character is the least significant byte, due to the little-endian architecture.  This means to control the value variable with something exact, you must write those bytes into memory in reverse order.
 
-Python can execute instructions on the command line by using the -c switch.  print command is useful for generating sequences of characters.  This command executes the commands found between the single quotes.
+Python can execute instructions on the command-line using the -c switch.  print command is useful for generating sequences of characters.  This command executes the commands found between the single quotes.
 
-Using Python with the `-c` switch will process/generate one line of code.  I'll use this technique to generate and output the payload as a string of bytes.
+Using Python with the `-c` switch will execute instructions on the command-line / process/generate one line of code.  I'll use this technique with `print()` to output a sequence of characters / the payload as a string of bytes.
 
 `python -c 'print "A"*20 + "\xef\xbe\xad\xde"'`
 
@@ -99,7 +101,7 @@ Here is your chance: buf: AAAAAAAAAAAAAAAAAAAAﾭ�
 val: 0xdeadbeef
 ```
 
-Great, we successfully changed the contents of `val` from `0x41414141` to `0xdeadbeef`, but no shell?!  What happened here is that the shell closed before we were able to use it.  So, we need a way to force the shell to stay open.  This can be done using a trick that appends `cat` to the input to keep shell open.
+Great, we successfully changed the contents of `val` from `0x41414141` to `0xdeadbeef`, but no shell?!  What happened here is that the shell closed before we were able to use it.  So, we need a way to force the shell to stay open.  This can be done using a trick that appends `cat` to the input to keep the shell open.
 
 The trick is to append the cat command to the input
 cat /etc/narnia_pass/narnia1
@@ -134,7 +136,7 @@ Let's start by reading the source code file for `narnia1.c`.
 int main(){
 	int (*ret)();
 
-	if(getenv("EGG")==NULL){    
+	if(getenv("EGG")==NULL){
 		printf("Give me something to execute at the env-variable EGG\n");
 		exit(1);
 	}
